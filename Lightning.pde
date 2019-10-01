@@ -1,28 +1,34 @@
-int count=0;
-float x1=0;
-float y1=0;
+
+float startX=0;
+float startY=150;
+float endX=0;
+float endY=150;
 
 public void setup()
 {
   size(300,300);
+  strokeWeight(2);
+  background(0);
 }
 public void draw()
 {
-
 }
 public void mousePressed(){
-	lightning(150,0);
+	startX=0;
+	startY=150;
+	endX=0;
+	endY=150;
+	bolt();
 }
 
-public void lightning(float x2, float y2){
- if(x2>300)
- 	;
- else{
- 	count++;
- 	x2=(float)(x1+Math.random()*9);
- 	y2=(float)(y1+Math.random()*9*Math.pow(-1, count));
- 	line(x1, y1, x2, y2);
- 	lightning((float)(x2),(float)(y2));
- }
+public void bolt(){
+	while(endX<300){
+		endX=(float)(startX+Math.random()*9);
+		endY=(float)(startY+Math.random()*18-9);
+		stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		
+		line(startX, startY, startX=endX,startY=endY);
+		
+	}
 }
 
